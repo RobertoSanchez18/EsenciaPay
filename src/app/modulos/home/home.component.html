@@ -1,0 +1,85 @@
+<app-header
+  [newValueForm]="isFormVisible"
+  (isFormVisible)="toggleForm($event)"
+></app-header>
+<div class="container">
+  <div class="container__perfil">
+    <p class="title">PERFIL DE USUARIO</p>
+    <div class="container__info">
+      <div class="container__img">
+        <img src="assets/perfil.webp" alt="imagen-perfil" />
+      </div>
+      <p>MARIO VELARDE</p>
+      <span>mario.velarde&#64;gmail.com</span>
+    </div>
+    <div class="container__saldo">
+      <div class="saldo">
+        <p>Saldo:</p>
+        <ng-container *ngIf="hiddenMonto">
+          <span>$1,234.56</span>
+        </ng-container>
+        <ng-container *ngIf="!hiddenMonto">
+          <span>########</span>
+        </ng-container>
+      </div>
+      <a class="btn_eye" (click)="mostrarSaldo()">
+        <ng-container *ngIf="hiddenMonto">
+          <img src="assets/eje.svg" alt="view" />
+        </ng-container>
+        <ng-container *ngIf="!hiddenMonto">
+          <img src="assets/view-off.svg" alt="viewOff" />
+        </ng-container>
+      </a>
+    </div>
+    <div class="container__options">
+      <button class="btn">
+        <img src="assets/settings.svg" alt="settings" />
+        Editar Perfil
+      </button>
+      <button class="btn">
+        <img src="assets/logout.svg" alt="logout" />
+        Cerrar Sesión
+      </button>
+    </div>
+  </div>
+
+  <div class="container__transacciones">
+    <p class="title">TRANSACCIONES</p>
+    <div class="transacciones">
+      <div *ngFor="let item of transacciones" class="transaccion">
+        <div class="dato">
+          <p>{{ item.nombre }}</p>
+          <span>{{ item.fecha }}</span>
+        </div>
+        <div class="monto">
+          <span>{{ item.monto }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container__form" [ngClass]="{ visible: isFormVisible }">
+    <p>Transferencia</p>
+
+    <form class="form">
+      <div class="input__destino">
+        <label>Destino</label>
+        <input type="text" />
+      </div>
+      <div class="input__monto">
+        <label>Monto</label>
+        <input type="number" />
+      </div>
+      <div class="input__textarea">
+        <label>Descripción</label>
+        <textarea rows="4"></textarea>
+      </div>
+      <div class="container__options">
+        <button class="btn btn__continuar">Continuar</button>
+        <button type="button" (click)="closeForm()" class="btn btn__cancelar">
+          Cancelar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
