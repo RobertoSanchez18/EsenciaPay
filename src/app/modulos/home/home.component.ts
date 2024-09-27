@@ -9,6 +9,7 @@ export class HomeComponent {
 
   hiddenMonto: boolean = false;
   isFormVisible: boolean = false;
+  isAlertSuccess: boolean = false;
   transacciones: any[] = [
     { 
       nombre: "Jose Perez",
@@ -40,8 +41,16 @@ export class HomeComponent {
     this.isFormVisible = isForm;
   }
 
-  closeForm(){
+  closeForm() {
     this.isFormVisible = false;
+  }
+
+  viewAlert() {
+    this.isAlertSuccess = true;
+
+    setTimeout(() => {
+      this.isAlertSuccess = false;
+    }, 3000);
   }
 
 }

@@ -150,7 +150,7 @@
 .container .container__form {
     position: absolute;
     width: 300px;
-    height: 600px;
+    height: 100vh;
     top: 0;
     right: -320px;
     background-color: #FFF;

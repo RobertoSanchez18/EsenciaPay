@@ -3,6 +3,7 @@
   (isFormVisible)="toggleForm($event)"
 ></app-header>
 <div class="container">
+  <app-alerta [isNotificationSuccess]="isAlertSuccess"></app-alerta>
   <div class="container__perfil">
     <p class="title">PERFIL DE USUARIO</p>
     <div class="container__info">
@@ -75,7 +76,7 @@
         <textarea rows="4"></textarea>
       </div>
       <div class="container__options">
-        <button class="btn btn__continuar">Continuar</button>
+        <button type="button" (click)="viewAlert()" class="btn btn__continuar">Continuar</button>
         <button type="button" (click)="closeForm()" class="btn btn__cancelar">
           Cancelar
         </button>
