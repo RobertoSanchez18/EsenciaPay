@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  esenciapay:
+    image: robertofsocity/as221s6_t03_esenciapay:latest
+    container_name: esenciapay
+    ports:
+      - "8080:80"

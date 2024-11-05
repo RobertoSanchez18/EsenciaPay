@@ -1,4 +1,4 @@
-.container {
+.containerr {
     width: 100%;
     height: 100vh;
     position: relative;
@@ -6,7 +6,7 @@
     background-color: #F3F4F6;
     padding: 32px;
     gap: 40px;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 .container__perfil {
@@ -96,10 +96,6 @@
 .container__perfil .container__options .btn img,
 .container__perfil .container__options .btn img{
     width: 20px;
-}
-
-.container__perfil .container__options .btn:hover {
-    background-color: #e0e0e0;
 }
 
 .container__transacciones {
@@ -234,12 +230,12 @@
     cursor: pointer;
 }
 
-.container .container__form .form .container__options .btn.btn__cancelar {
-    background-color: #E13434;
+.btn_connect {
+    height: 40px;
+    background-color: #ee4b00;
     color: #FFF;
-    font-weight: 600;
 }
 
-.container .container__form .form .container__options .btn.btn__cancelar:hover {
-    background-color: #c72020;
+.btn_connect:hover {
+    background-color: #c74002;
 }
