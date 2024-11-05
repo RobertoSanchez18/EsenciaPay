@@ -1,4 +1,4 @@
-name: Dockerize and Deploy to Docker Hub and Sonar Cloud
+name: Dockerize and Deploy to Docker Hub
 
 on:
   push:
