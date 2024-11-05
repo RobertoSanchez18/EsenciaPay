@@ -1,11 +1,24 @@
-name: Dockerize and Deploy to Kubernetes
+name: Dockerize and Deploy to Docker Hub and Sonar Cloud
 
 on:
   push:
     branches:
-      - webApp
+      - develop
 
 jobs:
+  sonarcloud:
+    name: SonarCloud
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
   build-and-deploy:
     runs-on: ubuntu-latest
 
