@@ -1,4 +1,4 @@
-name: Dockerize and Deploy to Kubernetes
+name: Dockerize and Deploy to Docker Hub
 
 on:
   push:
