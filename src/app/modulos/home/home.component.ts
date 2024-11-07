@@ -9,10 +9,10 @@ import Web3 from 'web3';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
+
+  userAddress: string = ''
   balance: string = '0';
-  account: string = ''
   hiddenMonto: boolean = false;
-  isFormVisible: boolean = false;
   isAlertSuccess: boolean = false;
 
   isVisibleFormDeposito: boolean = false;
@@ -40,14 +40,6 @@ export class HomeComponent implements OnInit {
   mostrarSaldo() {
     this.hiddenMonto = !this.hiddenMonto;
   }
-
-  toggleForm(isForm: boolean) {
-    this.isFormVisible = isForm;
-  }
-
-  closeForm() {
-    this.isFormVisible = false;
-  }
   transacciones: any[] = [
     {
       nombre: 'Jose Perez',
@@ -74,22 +66,22 @@ export class HomeComponent implements OnInit {
   constructor(private web3Service: EsenciaPayService) {}
 
   ngOnInit(): void {
+    this.connectWallet();
     this.loadBalance();
   }
 
   async connectWallet() {
-    await this.web3Service.connectWallet();
+    try {
+      this.userAddress = await this.web3Service.connectWallet();
+      console.log('Dirección de la cuenta:', this.userAddress);
+    } catch (error) {
+      console.error('Error al conectar la billetera', error);
+    }
     this.loadBalance();
   }
 
   async loadBalance() {
     this.balance = await this.web3Service.getBalance();
-  }
-
-  async loadAccount() {
-    const web3 = new Web3((window as any).ethereum);
-    const accounts = await web3.eth.requestAccounts();
-    this.account = accounts[0]; // Obtiene la primera cuenta conectada y la guarda
   }
 
   async deposit(amount: string) {

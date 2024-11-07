@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import Web3 from 'web3';
+import { accounts } from 'web3/lib/commonjs/eth.exports';
 
 @Injectable({
   providedIn: 'root'
@@ -158,7 +159,10 @@ export class EsenciaPayService {
   async connectWallet() {
     try {
       await (window as any).ethereum.request({ method: 'eth_requestAccounts' });
+      const accounts =  await this.web3.eth.getAccounts();
+      console.log('Cuentas conectadas: ', accounts)
       console.log('Billetera conectada');
+      return accounts[0];
     } catch (error) {
       console.error('Error al conectar la billetera', error);
     }

@@ -1,6 +1,4 @@
 <app-header
-  [newValueForm]="isFormVisible"
-  (isFormVisible)="toggleForm($event)"
 ></app-header>
 <div class="containerr">
   <app-alerta [isNotificationSuccess]="isAlertSuccess"></app-alerta>
@@ -10,10 +8,10 @@
       <div class="container__img">
         <img src="assets/perfil.webp" alt="imagen-perfil" />
       </div>
-      <p>{{ account }}</p>
-      <span>mario.velarde&#64;gmail.com</span>
+      <p> UserAddress: {{ userAddress }}</p>
     </div>
     <div class="container__saldo">
+      
       <div class="saldo">
         <p>Saldo:</p>
         <ng-container *ngIf="hiddenMonto">
@@ -72,32 +70,6 @@
 
     </div>
   </div>
-
-  <!-- <div class="container__form" [ngClass]="{ visible: isFormVisible }">
-    <p>Transferencia</p>
-
-    <form class="form">
-      <div class="input__destino">
-        <label>Destino</label>
-        <input type="text" formControlName="destino"/>
-      </div>
-      <div class="input__monto">
-        <label>Monto</label>
-        <input type="number" formControlName="monto"/>
-  
-      </div>
-      <div class="input__textarea">
-        <label>Descripción</label>
-        <textarea rows="4" formControlName="descripcion"></textarea>
-      </div>
-      <div class="container__options">
-        <button type="button"  class="btn btn__continuar">Continuar</button>
-        <button type="button"  class="btn btn__cancelar">
-          Cancelar
-        </button>
-      </div>
-    </form>
-  </div> -->
 </div>
 
 <div>
